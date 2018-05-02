@@ -6,14 +6,14 @@ SELECT titre FROM film;
 SELECT titre FROM film WHERE id_genre IS NULL;
 SELECT titre FROM film ORDER BY date_debut_affiche > 2000 DESC LIMIT 10;
 
-
 SELECT titre FROM film WHERE titre LIKE 'a%' AND id_genre= '1' AND '2';
-SELECT SUM(nbr_siege) AS nombre_siege FROM salle;
-SELECT SUM(nbr_siege) AS nombre_place_pour_chaque_étage FROM salle GROUP BY etage_salle;
+SELECT SUM(nbr_siege) AS 'nombre siege' FROM salle;
+SELECT SUM(nbr_siege) AS 'nombre place pour chaque étage' FROM salle GROUP BY etage_salle;
 SELECT nom_salle FROM salle WHERE nbr_siege < '200';
-SELECT titre AS titre_cool FROM film WHERE titre LIKE '%day%' AND id_genre = '2';
+SELECT titre AS 'titre cool' FROM film WHERE titre LIKE '%day%' AND id_genre = '2';
 
-SELECT COUNT(id_abo) AS nbr_abo, FLOOR(AVG(prix)) AS avg_abo FROM abonnement;
-!!!(A compléter)SELECT MAX(id_film) AS max_id_film FROM film WHERE id_genre = '8' BETWEEN annee_debut_affiche = '1980-00-00' AND '1990-00-00';
-!!! SELECT id_membre FROM membre WHERE id_dernier_film AS last_movie = '2557' AND '2741' ORDER BY date_dernier_film DESC;
+SELECT COUNT(id_abo) AS 'nbr abo', FLOOR(AVG(prix)) AS 'avg abo' FROM abonnement;
+SELECT MAX(id_film) AS 'max id film' FROM film WHERE id_genre= '8' AND date_debut_affiche BETWEEN 1980 AND 1999;
+SELECT membre.id_membre, date_dernier_film AS 'last movie' FROM membre INNER JOIN historique_membre ON membre.id_membre = historique_membre.id_membre WHERE id_film IN (2557,2741) ORDER BY date_dernier_film DESC;
 
+Boss Final => ... 
